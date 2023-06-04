@@ -1,0 +1,194 @@
+%%vim latex=xelatex
+%% abbreviate jjet U_\eta(\mathfrak n)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{empheq}
+\usepackage{mdframed}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{fontspec}
+  \setmainfont{Libertinus Sans}
+% \usepackage[mathrm=sym, usefilenames]{firamath-otf}
+\usepackage[mathrm=sym]{unicode-math}
+\setmathfont{Libertinus Math}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+\newcommand\bluebox[2]{\fcolorbox{white}{shallowBlue}{\hspace{1em}\LARGE \textbf{#1}}}
+\newcommand\x[1]{\text{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
+\newmdtheoremenv[backgroundcolor=shallowBlue, linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{lemma}{Lemma}[section]
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{remark}{Remark}[section]
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{exercise}{Exercise}[section]
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{example}{Example}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Kostant 78, On Whittaker Vectors and Representation Theory}
+\author{Karthik Dulam}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+    \maketitle
+
+\section{High Level Ideas}
+
+% \section{Work in progress}
+
+\section{Placeholder to make the numbers match}
+
+\section{Chapter}
+
+\subsection{Section}
+    
+    Let $\mathfrak g$ be a complex semisimple Lie algebra with Cartan subalgebra $\mathfrak h$ and root system $\Phi$.
+
+    In section 1.1, we defined $\mathfrak n \subset \mathfrak g$ to be the nilradical of 
+    $\mathfrak b = \mathfrak h + \sum_{\phi \in \Delta_+} \mathfrak g_\phi$. $\mathfrak n$ is a maximal nilpotent subalgebra 
+    of $\mathfrak g$. We also defined $\mathfrak n^-$ to be the nilradical of the opposite Borel subalgebra 
+    $\mathfrak b^- = \mathfrak h + \sum_{\phi \in \Delta_-} \mathfrak g_\phi$. \\
+
+    In section 2.3, we defined a Lie algebra homomorphism $\eta: \mathfrak n \to \mathbb C$ to be non-singular if 
+    the constants $c_i = \eta(e_{\alpha_i})$ are non-zero for all $\alpha_i \in \Delta_+$. This extends to a homomorphism 
+    $\eta: U(\mathfrak n) \to \mathbb C$, and let $U_\eta(\mathfrak n)$ be the kernel of this homomorphism. 
+    We also know that $U(\mathfrak n) = \mathbb C \oplus U_\eta(\mathfrak n)$ and since $\mathfrak g = \overline{\mathfrak b} \oplus \mathfrak n$,
+    we have $U = U(\overline{\mathfrak b}) \oplus U U_\eta(\mathfrak n)$. And now let $\rho_\eta$ be the projection map
+    form $U$ to $U(\overline{\mathfrak b})$ with kernel $UU_\eta(\mathfrak n)$. \\
+
+    \orangebox{TODO} Read section 2.5 from the paper when needed.
+
+    \begin{definition}[Whittaker Vector and Whittaker Module]
+	A vector $w \in V$ is called a Whittaker vector with respect to $\eta$ if $xw = \eta(x)w$ for all $x \in \mathfrak n$.
+	A $U-$module $V$ is called a Whittaker module if it contains a cyclic ($Uv = V$) Whittaker vector.
+    \end{definition}
+
+    \begin{remark}
+	This definition seems to mimic the ideas from Cartan subalgebra? We have a maximal nilpotent subalgebra and are looking 
+	at vectors which are eigenvectors w.r.t. this subalgebra with $\eta$ representing the roots.
+	A cyclic Whittaker vector resembles a highest weight vector.
+    \end{remark}
+    
+    If $V$ is a Whittaker module with $w$ as a cyclic Whittaker vector, and if $U_w$ and $U_V$ are the annihilators of $w$ and $V$ 
+    respectively, then one has $V \cong U/U_w$ as $U-$modules, $UU_\eta(\mathfrak n) \subseteq U_w$, and $UZ_V \subseteq U_w$ where 
+    $Z_V = Z \cap U_V$. This means that $U_w$ contains the kernel of the projection map $\rho_\eta$ and hence $U_w$ is stable.
+
+    Also note $U_w$ is a left ideal and $U_V$ is a two-sided ideal.
+    \\
+
+    \begin{remark}
+    Since $V$ is cyclic, we have $V \cong U/U_w$ as $U-$modules, so $V$ is determined upto equivalence by $U_w$.
+    \label{remark:V-determined-by-U-w}
+    \end{remark}
+    
+
+    \begin{theorem}[$U_w$ decomposition]
+    \label{thm:U_w_decomposition}
+	 Let V be any $U-$module which admits a cyclic Whittaker vector $w$ then, $U_w = UZ_V + UU_\eta(\mathfrak n)$. 
+    \end{theorem}
+
+    To prove this we will need the following lemma. 
+
+    \begin{definition}[$\eta$-reduced action]
+    If $x \circ v^\eta = (xv)^\eta$ then the $\eta$-reduced action of $\mathfrak n$ on $U(\overline{\mathfrak b})$ is given by
+    $x \cdot v = x \circ v - \eta(x)v$. \\ \orangebox{TODO: Read 2.6}
+    \end{definition}
+	But before that, as mentioned earlier, $U_w$ is stable under the projection map $\rho_\eta$. And for $X \subseteq U$, 
+	denote $X^\eta = \rho_\eta(X)$. From section 2.4.11 in the paper, we know that $\rho_\eta$ induces an isomorphism 
+	$Z \to W(\overline{\mathfrak b}) = Z^\eta$.  
+	\orangebox{TODO: Read 2.4.11} \\
+	If $Z_*$ is an ideal in $Z$, then $W_*(\overline{\mathfrak b}) = Z_*^\eta$ is an isomorphic ideal in $W(\overline{\mathfrak b})$.
+	Thus, we have $(UZ_*)^\eta = U(\o :verline{\mathfrak b}) W_*(\overline{\mathfrak b}) = \tilde A \otimes W_*(\overline{\mathfrak b})$.
+	This is due to Remark 2.3 in paper which says $(uv)^\eta = u^\eta v^\eta$, \\ \orangebox{TODO: Read Remark 2.3}
+	and Theorem 2.5 in paper which gives the last equality. \\ \orangebox{TODO: Read Theorem 2.5, what the hell is happening over there?}
+	And finally by 2.3.5 we have
+  \begin{equation}
+  UZ_* + UU_\eta(\mathfrak n)  = (\tilde A \otimes W_*(\overline{\mathfrak b})) \oplus UU_\eta(\mathfrak n)
+    \label{eq:UZ_*}
+  \end{equation}
+
+
+    \begin{lemma}
+      Let $X = \{v \in U(\overline{\mathfrak b}) \mid (x \cdot v)w = 0 \text{ for all } x \in \mathfrak n\}$. Then 
+      $X = (\tilde A \otimes W_V(\overline{\mathfrak b})) \oplus UU_\eta(\mathfrak n)$ where $W_V(\overline{\mathfrak b}) = (Z_V)^\eta$.
+      We also have $U_w(\overline{\mathfrak b}) \subseteq X$ and $U_w(\overline{\mathfrak b}) = \tilde A \otimes W_V(\overline{\mathfrak b})$ 
+      where $U_w(\overline{\mathfrak b}) = U_w \cap U(\overline{\mathfrak b})$.
+
+    \end{lemma}
+
+    \begin{proof}[Proof of lemma]
+      The proof is technical, best to come back to them later and focus on what the statement is saying.
+    \end{proof}
+
+    \begin{proof}[Proof of theorem]
+    	Theorem \ref{thm:U_w_decomposition} says that $U_w$ can be decomposed into two parts, a trivial 
+	part $UU_\eta(\mathfrak n)$ and the other $UZ_V$. The content lies in proving 
+	$U_w \subseteq UZ_V + UU_\eta(\mathfrak n)$, but that by \eqref{eq:UZ_*} is equivalent to proving 
+	"If $u\in U_w$ then $v \in \tilde A \otimes W_V(\overline{\mathfrak b})$ where $v = u^\eta$", the rest 
+	follows from the lemma.
+
+	Theorem \ref{thm:U_w_decomposition} implies, along with remark \ref{remark:V-determined-by-U-w},
+	  that a Whittaker module $V$ is determined upto equivalence 
+	by the central ideal $Z_V$.
+    \end{proof}
+
+  \begin{remark}
+    The proof uses non-singularity of $\eta$, since it relies on Theorem 2.5 in the paper, which in turn relies on 
+    the conclusion when $\eta$ is non-singular in Theorem 2.4.1 in the paper.
+
+    Can we fix theorem 2.4.1 in the paper to work for singular $\eta$ with maybe additional properties on $\eta$?
+  \end{remark}
+    
+
+    \begin{theorem}[Relation between Whittaker modules and ideals of the Center of $U$]
+      Let $U, V, U_V, Z_V$ be as above. Then the correspondence 
+      \begin{equation}
+      	V \mapsto Z_V
+      	\label{eq:correspondence}
+      \end{equation}
+      is a bijection between the set of equivalence classes of Whittaker modules and the set of ideals of $Z$.
+    \end{theorem}
+    
+    \begin{proof}[Proof]
+    	Injectivity is clear be Theorem \ref{thm:U_w_decomposition}. 
+	For surjectivity, let $Z_*$ be an ideal of $Z$.
+	Then we would like to construct a Whittaker module $V$ such that $Z_V = Z_*$. 
+	But we already know that $Z_V$ determines $V$ upto equivalence. 
+	So let $L = UZ_* + UU_\eta(\mathfrak n)$, then $V = U/L$ is a Whittaker module with $U_w = L$.
+    \end{proof}
+
+
+\end{document}
