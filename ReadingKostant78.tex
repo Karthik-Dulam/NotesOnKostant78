@@ -5,15 +5,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{geometry}
+\usepackage[marginparwidth=1.3in, hoffset=0.5in]{geometry}
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{bm}
 \usepackage{empheq}
 \usepackage{mdframed}
 \usepackage{booktabs}
 \usepackage{color}
 \usepackage{hyperref}
+\usepackage{todonotes}
+  \setuptodonotes{noline, color=orange!30}
+  \reversemarginpar
 \usepackage{fontspec}
   \setmainfont{Libertinus Sans}
 % \usepackage[mathrm=sym, usefilenames]{firamath-otf}
@@ -30,31 +34,39 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
 \definecolor{ocre}{RGB}{243,102,25}
 \definecolor{mygray}{RGB}{243,243,244}
-\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{deepGreen}{RGB}{126,211,0}
 \definecolor{shallowGreen}{RGB}{235,255,255}
 \definecolor{deepBlue}{RGB}{61,124,222}
 \definecolor{shallowBlue}{RGB}{235,249,255}
+\definecolor{peach}{RGB}{255,164,164}
+\definecolor{shallowGray}{RGB}{235,255,235}
+\definecolor{tangerine}{RGB}{255,158,26}
+\definecolor{shallowYellow}{RGB}{234,206,100}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an peachbox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\peachbox[1]{\fcolorbox{ocre}{peach}{\hspace{1em}#1\hspace{1em}}}
 \newcommand\bluebox[2]{\fcolorbox{white}{shallowBlue}{\hspace{1em}\LARGE \textbf{#1}}}
 \newcommand\x[1]{\text{#1}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Ker}{Ker}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
 \newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
 \theoremstyle{mytheoremstyle}
-\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=yellow,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
 \theoremstyle{mytheoremstyle}
-\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=tangerine,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
 \theoremstyle{myproblemstyle}
 \newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
-\newmdtheoremenv[backgroundcolor=shallowBlue, linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{lemma}{Lemma}[section]
-\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{remark}{Remark}[section]
+\newmdtheoremenv[backgroundcolor=yellow!50, linewidth=1pt,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{lemma}{Lemma}[section]
+\newmdtheoremenv[linewidth=1pt,linecolor=black,backgroundcolor=peach,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{remark}{Remark}[section]
 \newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{exercise}{Exercise}[section]
 \newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{example}{Example}[section]
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{fact}{Fact}[section]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,16 +76,10 @@
 
 \begin{document}
     \maketitle
+    \listoftodos
 
-\section{High Level Ideas}
 
-% \section{Work in progress}
-
-\section{Placeholder to make the numbers match}
-
-\section{Chapter}
-
-\subsection{Section}
+\section{Section}
     
     Let $\mathfrak g$ be a complex semisimple Lie algebra with Cartan subalgebra $\mathfrak h$ and root system $\Phi$.
 
@@ -87,13 +93,13 @@
     $\eta: U(\mathfrak n) \to \mathbb C$, and let $U_\eta(\mathfrak n)$ be the kernel of this homomorphism. 
     We also know that $U(\mathfrak n) = \mathbb C \oplus U_\eta(\mathfrak n)$ and since $\mathfrak g = \overline{\mathfrak b} \oplus \mathfrak n$,
     we have $U = U(\overline{\mathfrak b}) \oplus U U_\eta(\mathfrak n)$. And now let $\rho_\eta$ be the projection map
-    form $U$ to $U(\overline{\mathfrak b})$ with kernel $UU_\eta(\mathfrak n)$. \\
+    form $U$ to $U(\overline{\mathfrak b})$ with kernel $UU_\eta(\mathfrak n)$.
 
-    \orangebox{TODO} Read section 2.5 from the paper when needed.
+    \todo[noline]{Read section 2.5 in paper when needed.}
 
     \begin{definition}[Whittaker Vector and Whittaker Module]
 	A vector $w \in V$ is called a Whittaker vector with respect to $\eta$ if $xw = \eta(x)w$ for all $x \in \mathfrak n$.
-	A $U-$module $V$ is called a Whittaker module if it contains a cyclic ($Uv = V$) Whittaker vector.
+	A $U-$module $V$ is called a Whittaker module if it contains a cyclic ($Uw = V$) Whittaker vector.
     \end{definition}
 
     \begin{remark}
@@ -107,7 +113,6 @@
     $Z_V = Z \cap U_V$. This means that $U_w$ contains the kernel of the projection map $\rho_\eta$ and hence $U_w$ is stable.
 
     Also note $U_w$ is a left ideal and $U_V$ is a two-sided ideal.
-    \\
 
     \begin{remark}
     Since $V$ is cyclic, we have $V \cong U/U_w$ as $U-$modules, so $V$ is determined upto equivalence by $U_w$.
@@ -124,16 +129,17 @@
 
     \begin{definition}[$\eta$-reduced action]
     If $x \circ v^\eta = (xv)^\eta$ then the $\eta$-reduced action of $\mathfrak n$ on $U(\overline{\mathfrak b})$ is given by
-    $x \cdot v = x \circ v - \eta(x)v$. \\ \orangebox{TODO: Read 2.6}
+    $x \cdot v = x \circ v - \eta(x)v$.  
     \end{definition}
+    \todo[noline]{Read 2.6 in paper}
 	But before that, as mentioned earlier, $U_w$ is stable under the projection map $\rho_\eta$. And for $X \subseteq U$, 
 	denote $X^\eta = \rho_\eta(X)$. From section 2.4.11 in the paper, we know that $\rho_\eta$ induces an isomorphism 
 	$Z \to W(\overline{\mathfrak b}) = Z^\eta$.  
-	\orangebox{TODO: Read 2.4.11} \\
+	\todo[noline]{Read 2.4.11 in paper} 
 	If $Z_*$ is an ideal in $Z$, then $W_*(\overline{\mathfrak b}) = Z_*^\eta$ is an isomorphic ideal in $W(\overline{\mathfrak b})$.
-	Thus, we have $(UZ_*)^\eta = U(\o :verline{\mathfrak b}) W_*(\overline{\mathfrak b}) = \tilde A \otimes W_*(\overline{\mathfrak b})$.
-	This is due to Remark 2.3 in paper which says $(uv)^\eta = u^\eta v^\eta$, \\ \orangebox{TODO: Read Remark 2.3}
-	and Theorem 2.5 in paper which gives the last equality. \\ \orangebox{TODO: Read Theorem 2.5, what the hell is happening over there?}
+	Thus, we have $(UZ_*)^\eta = U(\overline{\mathfrak b}) W_*(\overline{\mathfrak b}) = \tilde A \otimes W_*(\overline{\mathfrak b})$.
+	This is due to Remark 2.3 in paper which says $(uv)^\eta = u^\eta v^\eta$, \todo[noline]{Read Remark 2.3 in paper}
+	and Theorem 2.5 in paper which gives the last equality.  \todo[noline]{Read Theorem 2.5 in paper, what the hell is happening over there?}
 	And finally by 2.3.5 we have
   \begin{equation}
   UZ_* + UU_\eta(\mathfrak n)  = (\tilde A \otimes W_*(\overline{\mathfrak b})) \oplus UU_\eta(\mathfrak n)
@@ -141,7 +147,7 @@
   \end{equation}
 
 
-    \begin{lemma}
+    \begin{lemma}[Technical Lemma]
       Let $X = \{v \in U(\overline{\mathfrak b}) \mid (x \cdot v)w = 0 \text{ for all } x \in \mathfrak n\}$. Then 
       $X = (\tilde A \otimes W_V(\overline{\mathfrak b})) \oplus UU_\eta(\mathfrak n)$ where $W_V(\overline{\mathfrak b}) = (Z_V)^\eta$.
       We also have $U_w(\overline{\mathfrak b}) \subseteq X$ and $U_w(\overline{\mathfrak b}) = \tilde A \otimes W_V(\overline{\mathfrak b})$ 
@@ -166,11 +172,10 @@
     \end{proof}
 
   \begin{remark}
-    The proof uses non-singularity of $\eta$, since it relies on Theorem 2.5 in the paper, which in turn relies on 
-    the conclusion when $\eta$ is non-singular in Theorem 2.4.1 in the paper.
-
-    Can we fix theorem 2.4.1 in the paper to work for singular $\eta$ with maybe additional properties on $\eta$?
-  \end{remark}
+    Note that the proof depends on non-singularity of $\eta$.
+    It relies on Theorem 2.5 in the paper, which in turn relies on 2.4.3 in Theorem 2.4.1 in the paper,
+    the part which assumes non-singularity of $\eta$. 
+  \end{remark} \todo[noline]{Read 2.4.1 in paper}
     
 
     \begin{theorem}[Relation between Whittaker modules and ideals of the Center of $U$]
@@ -190,5 +195,94 @@
 	So let $L = UZ_* + UU_\eta(\mathfrak n)$, then $V = U/L$ is a Whittaker module with $U_w = L$.
     \end{proof}
 
+    \begin{remark}
+    	This also gives us a correspondence between the set of ideals of center and the set of annihilators of Whittaker modules.
+	$Z_* \mapsto U_w = UZ_* + UU_\eta(\mathfrak n)$.
+    \end{remark}
+    
+    \begin{fact}
+      The subalgebra $ZU(\mathfrak n)$ can be written as $Z \otimes U(\mathfrak n)$. 
+      \footnote{Reference: Section 3.3 in paper, Theorem 0.12 in \emph{Lie Group Representations on Polynomial Rings by Kostant}}
+
+      Then we can write $Z/Z_*$ as a $Z$-module and thus as a $Z\otimes U(\mathfrak n)$-module, if $u \in Z, v \in U(\mathfrak n)$ 
+      and $y \in Z/Z_*$, then $uvy = \eta(v)uy$.
+    \end{fact}
+
+    \begin{theorem}[Every Whittaker module is an induced module]
+      Let $V$ be any $U$-module then, $V$ is a Whittaker module if and only if we have the isomorphism 
+      $V \cong U \otimes_{Z \otimes U(\mathfrak n)} Z/Z_*$ of $U$-modules for some ideal $Z_*$ of $Z$.
+      And furthermode, in such a case $Z_*$ is unique, and $Z_* = Z_V$.
+    \end{theorem}
+    
+    \begin{proof}[Proof]
+      \todo{Write proof, not hard, not interesting}
+    \end{proof}
+
+    \todo{Define Universal Whittaker Module}
+
+    \begin{theorem}[Whittaker Vectors in a Whittaker Module]
+      Let $V$ be any $U$-module with a cyclic Whittaker vector $w$. Then any $v \in V$ is a Whittaker vector if and only if 
+      $v$ is form $v = uw$ where $u \in Z$.
+    \end{theorem}
+
+    \begin{remark}
+    	This theorem neatly characterizes Whittaker vectors in a Whittaker module. 
+	And in other words it says that the space of Whittaker vectors is a $Z$-cyclic module 
+	isomorphic to $Z/Z_Vw$ since we have a $Z$-module homomorphism $u \in Z \mapsto uw \in V$ with kernel $Z_V$ 
+	and image being the space of Whittaker vectors.
+    \end{remark}
+    
+    For any $U$-module V, let $\End_U V$ be the algebra of operators on $V$ commuting with $U$,
+    and if $\pi_V: U \to \End V$ is a representation of $U$ on $V$, then 
+    $\pi_V(Z) \subseteq \End_U V$ and $\pi_V(Z) \cong Z/Z_V$ as algebras.
+  
+    \begin{theorem}[$\End_U V$ in a Whittaker Module is a commutative algebra]
+      Let $V$ be a Whittaker module, then $\End_U V = \pi_V(Z)$ and $\End_U V \cong Z/Z_V$ as algebras.
+      And thus $\End_U V$ is a commutative algebra.
+    \end{theorem}
+    \begin{proof}[Proof]
+      Let $w$ be a cyclic Whittaker vector, and if $\alpha \in \End_U V$, then $\alpha w$ is also a Whittaker vector.
+      But by the previous theorem, $\alpha w = uw$ for some $u \in Z$. Now for any $v \in U$, we have 
+      $\alpha vw = v\alpha w = vuw = uvw$ thus $\alpha = \pi_V(u)$.
+    \end{proof}
+
+    \todo{Read remark 3.5 in paper}
+    \begin{remark}
+      This resembles the result from Dixmier's book on enveloping algebras, that the centralizer of a regular 
+      element is commutative. Probably why Prof. Micheal was excited about that.
+    \end{remark}
+    
+    We will refer to a homomorphism $\zeta: Z \to \mathbb{C}$ as a central character.
+    Let $Z_\zeta = \Ker \zeta$, since image of $\zeta$ is a field, $Z_\zeta$ is a maximal ideal of $Z$.
+    Using 2.3.2 in paper, we can naturally parametrize the set of central characters by $\mathbb{C}^l$.
+    \todo{Read 2.3.2 in paper}
+
+    If $V$ is a $U$-module, we say $V$ admits an infinitesimal character $\zeta$ if there exists a central character $\zeta$
+    if $\zeta$ is a central character such that $uv = \zeta(v)$ for all $u \in Z, v \in V$.
+    By Dixmier's Theorem any irreducible $U$-module admits an infinitesimal character.
+    \todo{Find reference}
+
+    For a central character $\zeta$, let $\mathbb{C}_{\zeta,\eta}$ be the 1-dimensional $Z\otimes U(\mathfrak n)$-module 
+    defined so that if $u\in Z, v \in U(\mathfrak n)$ and $y \in \mathbb{C}_{\zeta,\eta}$, then $uvy = \zeta(u)\eta(v)y$.
+    Also let $Y_{\zeta,\eta} = U \otimes_{Z \otimes U(\mathfrak n)} \mathbb{C}_{\zeta,\eta}$.\\
+
+    $Y_{\zeta,\eta}$ admits an infinitesimal character and that is $\zeta$.
+    \todo{Why is this?}
+
+    \todo{Read stuff about Verma Modules for emphasis on irreducibility in the next theorem}
+
+    \begin{theorem}[Big Theorem]
+      Let $V$ be any Whittaker module for $U$, the universal enveloping algebra of a semisimple Lie algebra $\mathfrak{g}$, 
+      then the following are equivalent:
+      \begin{enumerate}
+      	\item $V$ is an irreducible $U$-module.
+	\item $V$ admits an infinitesimal character.
+	\item The corresponding ideal $Z_V$ of $Z$, given by Theorem \ref{thm:U_w_decomposition} is a maximal ideal.
+	\item The space of Whittaker vectors in $V$ is 1-dimensional.
+	\item All non-zero Whittaker vectors in $V$ are cyclic.
+	\item The centralizer $\End_U V$ reduces to the constants.
+	\item $V$ is isomorphic to $Y_{\zeta,\eta}$ for some central character $\zeta$.
+      \end{enumerate}
+    \end{theorem}
 
 \end{document}
