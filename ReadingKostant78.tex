@@ -156,7 +156,7 @@
     \end{lemma}
 
     \begin{proof}[Proof of lemma]
-      The proof is technical, best to come back to them later and focus on what the statement is saying.
+      The proof is technical, best to come back to them later and focus now on what the statement is saying.
     \end{proof}
 
     \begin{proof}[Proof of theorem]
@@ -206,19 +206,25 @@
       The subalgebra $ZU(\mathfrak n)$ can be written as $Z \otimes U(\mathfrak n)$. 
       \footnote{Reference: Section 3.3 in paper, Theorem 0.12 in \emph{Lie Group Representations on Polynomial Rings by Kostant}}
 
-      Then we can write $Z/Z_*$ as a $Z$-module and thus as a $Z\otimes U(\mathfrak n)$-module, if $u \in Z, v \in U(\mathfrak n)$ 
-      and $y \in Z/Z_*$, then $uvy = \eta(v)uy$.
+      Then we can write $Z/Z_*$ as a $Z$-module and thus,
+      $(Z/Z_*)_\eta$ as a $Z\otimes U(\mathfrak n)$-module, if $u \in Z, v \in U(\mathfrak n)$ 
+      and $y \in (Z/Z_*)_\eta$, then $uvy = \eta(v)uy$.
     \end{fact}
 
     \begin{theorem}[Every Whittaker module is an induced module]
       Let $V$ be any $U$-module then, $V$ is a Whittaker module if and only if we have the isomorphism 
       $V \cong U \otimes_{Z \otimes U(\mathfrak n)} Z/Z_*$ of $U$-modules for some ideal $Z_*$ of $Z$.
-      And furthermode, in such a case $Z_*$ is unique, and $Z_* = Z_V$.
+      And furthermore, in such a case $Z_*$ is unique, and $Z_* = Z_V$.
     \end{theorem}
     
     \begin{proof}[Proof]
       \todo{Write proof, not hard, not interesting}
     \end{proof}
+
+    \begin{remark}
+    	This resembles the construction using Verma modules.
+    \end{remark}
+    
 
     \todo{Define Universal Whittaker Module}
 
@@ -230,7 +236,7 @@
     \begin{remark}
     	This theorem neatly characterizes Whittaker vectors in a Whittaker module. 
 	And in other words it says that the space of Whittaker vectors is a $Z$-cyclic module 
-	isomorphic to $Z/Z_Vw$ since we have a $Z$-module homomorphism $u \in Z \mapsto uw \in V$ with kernel $Z_V$ 
+	isomorphic to $Z/Z_Vw$ since we have a $Z$-module homomorphism $u \in Z \mapsto uw \in V$ with kernel $Z_V = Z_w$ 
 	and image being the space of Whittaker vectors.
     \end{remark}
     
@@ -251,7 +257,7 @@
     \todo{Read remark 3.5 in paper}
     \begin{remark}
       This resembles the result from Dixmier's book on enveloping algebras, that the centralizer of a regular 
-      element is commutative. Probably why Prof. Micheal was excited about that.
+      element is commutative. Probably why Prof. Michael was excited about that.
     \end{remark}
     
     We will refer to a homomorphism $\zeta: Z \to \mathbb{C}$ as a central character.
@@ -271,7 +277,18 @@
     $Y_{\zeta,\eta}$ admits an infinitesimal character and that is $\zeta$.
     \todo{Why is this?}
 
-    \todo{Read stuff about Verma Modules for emphasis on irreducibility in the next theorem}
+      Let $\eta_0$ be the trivial character, and let $Y_{\zeta,\eta_0}$ be defined the same way.
+      And let $\lambda: \mathfrak{h} \to \mathbb{C}$ be a linear functional, then it defines a 
+      homomorphism $\lambda: U(\mathfrak{h}) \to \mathbb{C}$ and the corresponding Verma module is
+      $M_\lambda = U \otimes_{U(\mathfrak{h}) \otimes U(\mathfrak{n})} \mathbb{C}_\lambda$
+      where $U(\mathfrak{h})$ acts on $\mathbb{C}_\lambda$ via $\lambda$ and $U(\mathfrak{n})$ acts trivially.
+      Now one knows that $M_\lambda$ admits an infinitesimal character $\zeta = \zeta(\lambda)$. 
+      \todo{Why? Verma modules are not irreducible. Harish-Chandra isomorphism?}
+      And hence considering the cyclic generator, one has the exact sequence
+      $Y_{\zeta,\eta_0} \to M_\lambda \to 0$ of $U$-modules.
+      \todo{Does this not mean that the map is just surjective?}
+      But $M_\lambda$ is in general not irreducible, thus in particular $Y_{\zeta,\eta_0}$ is not in general irreducible.
+      In contrast the next theorem asserts that $Y_{\zeta,\eta}$ is always irreducible when $\eta$ is non-singular.
 
     \begin{theorem}[Big Theorem]
       Let $V$ be any Whittaker module for $U$, the universal enveloping algebra of a semisimple Lie algebra $\mathfrak{g}$, 
@@ -286,5 +303,77 @@
 	\item $V$ is isomorphic to $Y_{\zeta,\eta}$ for some central character $\zeta$.
       \end{enumerate}
     \end{theorem}
+
+    \begin{theorem} 
+    	Let $V$ be any $U-$module which admits an infinitesimal character. Assume $w \in V$ is a Whittaker vector, then 
+	the submodule $Uw$ is irreducible. If $\zeta$ is the infinitesimal character and $w_\zeta$ is the cyclic 
+	Whittaker generator of $Y_{\zeta,\eta}$, then $Uw \cong Y_{\zeta,\eta}$ as $U$-modules with $uw_\zeta \mapsto uw$.
+	This isomorphism is unique up to a scalar multiple.
+
+	If $V_1$ and $V_2$ are irreducible $U$-modules with the same infinitesimal characters, and if they have 
+	Whittaker vectors, they are unique up to a scalar multiple and $V_1 \cong V_2$ as $U$-modules.
+    \end{theorem}
+
+    If $V$ is a Whittaker module, $Z_V$ its corresponding ideal, and if $V_* \subseteq V$ a submodule, then 
+    let $Z(V_*) = \{u \in Z \mid u(V) \subseteq V_*\}$ so that $Z(V_*)$ is an ideal in $Z$ containing $Z_V$.
+
+    \begin{remark}
+    	If $w \in V$ is a cyclic Whittaker vector, and if $u \in Z$, then $u \in Z(V_*)$ if and only if $uw \in V_*$.
+    \end{remark}
+    
+    \begin{theorem}
+    	Let $V$ be a Whittker module, then the map $V_* \to Z(V_*)$ is a bijection between the set 
+	of submodules of $V$ and the set of ideals of $Z$ containing $Z_V$. Furthermore, 
+	$Z(V_1 + V_2) = Z(V_1) + Z(V_2)$ and $Z(V_1 \cap V_2) = Z(V_1) \cap Z(V_2)$ and the 
+	inverse to the correspondece is given by $Z_* \to Z_*V$ for any ideal $Z_*$ of $Z$ containing $Z_V$.
+    \end{theorem}
+
+    \begin{remark}
+    	While we had the correspondece between $Z_V$ an ideal in $Z$ and $V$ a Whittker module,
+	this theorem tells us that ideals $Z_*$ of $Z$ containing $Z_V$ correspond to 
+	$U-$submodules $V_* = Z_*V$ of $V$ and the ideal corresponding to $V_*$ is $Z(V_*)$.
+	This correspondece is an order reversing lattice isomorphism similar to what we see in 
+	Galois theory.
+    \end{remark}
+    
+    \begin{theorem}[Corollary]
+      Let $Y_\eta$ be the induced $U-$module denoted by $Y_\eta = U \otimes_{U(\mathfrak{n})} \mathbb{C}_\eta$.
+      The action of $Z$ on $Y_\eta$ induces an isomorphism $Z \to \End_U Y_\eta$.
+      Furthermore if $Z_*$ is any ideal in $Z$ the map $Z_* \to Z_*Y_\eta$ sets up a bijection of the sets 
+      of all ideals in $Z$ and the set of all $U-$submodules of $Y_\eta$.
+    \end{theorem}
+
+    \begin{remark}
+    	This is just the earlier theorem applied to the universal Whittaker module.
+    \end{remark}
+    
+    Let $\lambda \in \mathfrak{h}'$ be a linear functional on $\mathfrak{h}$ and let $M_\lambda$ be the corresponding
+    Verma module. Let $C \subseteq \mathfrak{h}'$ be the $\mathbb{Z}$-cone spanned by the negative roots and zero and 
+    let $C_\lambda = \lambda + C$. If $M_\lambda(\mu) \subseteq M_\lambda$ is the weight space corresponding to the weight
+    $\mu \in \mathfrak{h}'$, then one has the direct sum $M_\lambda = \bigoplus_{\mu \in C_\lambda} M_\lambda(\mu)$.
+    And if $\phi \in \Delta$ one knows that $e_\phi M_\lambda(\mu) \subseteq M_\lambda(\mu + \phi)$.
+
+    Let $U(\mathfrak{n})$ be a $\mathfrak{b}$ module defines as $x \cdot u = x u$ for $x \in \mathfrak{n}$ and 
+    $u \in U(\mathfrak{n})$ and $x \cdot u = [x u] $ for $x \in \mathfrak{h}$ and $u \in U(\mathfrak{n})$.
+    Let $U(\mathfrak{n})'$ be the dual module. 
+
+    \begin{definition}[Restricted dual to $U(\mathfrak{n})$]
+      Let $U(\mathfrak{n})^*$ be the subspace of all $\beta \in U(\mathfrak{n})'$ such that $\beta$ vanishes on a power of
+      the augmentation ideal $\mathfrak{n}U(\mathfrak{n})$. Then $U(\mathfrak{n})^*$ is a $U(\mathfrak{b})$-module.
+      We refer to $U(\mathfrak{n})^*$ as the restricted dual to $U(\mathfrak{n})$.
+    \end{definition}
+
+    Let $0 \neq m_\lambda \in M_\lambda$ be a highest weight vector and $l$ be a linear functional 
+    on $M_\lambda$ such that $l(m_\lambda) = 1$ and $l$ vanishes on $M_\lambda(\mu)$ for $\mu \neq \lambda$.
+    For any $v \in M_\lambda$ let $\beta_v \in U(\mathfrak{n})'$ be defined by 
+    $\langle \beta_v, u \rangle = l(\check uv)$ for $u \in U(\mathfrak{n})$.
+    Where $\check u$ denotes the image of the linear isomorphism defined by $\check{wu} = \check u \check w$ 
+    and $\check x = -x$ for $x \in \mathfrak{g}$.
+
+    \begin{lemma}
+    	The correspondece $v \mapsto \beta_v$ defines a map $M_\lambda \to U(\mathfrak{n})^*$ which is a 
+	$\mathfrak{n}$-module homomorphism. And this is an isomorphism of $\mathfrak{n}-$modules iff 
+	the Verma module $M_\lambda$ is irreducible.
+    \end{lemma}
 
 \end{document}
